@@ -13,7 +13,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ Str::limit( $product->name, 25) }}</h5>
                             <p class="card-text">{{ Str::limit($product->description, 40) }}</p>
-                            <a href="#" class="btn btn-primary"><i class="fa-solid fa-plus"></i></a>
+                            <a href="#" class="btn btn-primary" style="border-radius: 60vh"><i class="fa-solid fa-eye"></i></a>
                         </div>
                     </div>
                     <br>
