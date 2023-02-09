@@ -24,3 +24,4 @@ Route::resource('categories', CategoryController::class);
 
 // rota para o carrinho de compra
 Route::get('/cart', [CartController::class, 'cartList'])->name('cart');
+Route::post('/cart', [CartController::class, 'addCart'])->name('addCart');
