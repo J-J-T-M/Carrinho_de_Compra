@@ -25,6 +25,7 @@
                     <button class="btn btn-warning btn-large"><i class="fa-solid fa-cart-shopping"></i> Comprar </button>
                 </div>
             </form>
+            
 
         </div>
         <div class="col-sm-6 col-md-1">
