@@ -30,5 +30,15 @@ class CartController extends Controller
         \Cart::remove($request->id);
         return redirect('cart')->with('success', 'Produto removido com sucesso!');
     }
+    public function cartUpdate(Request $request)
+    {
+        \Cart::update($request->id, [
+            'quantity' => [
+                'relative' => false,
+                'value' => abs($request->quantity)
+            ]
+        ]);
+        return redirect('cart')->with('success', 'Produto atualizado com sucesso!');
+    }
     
 }
