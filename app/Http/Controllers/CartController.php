@@ -40,5 +40,9 @@ class CartController extends Controller
         ]);
         return redirect('cart')->with('success', 'Produto atualizado com sucesso!');
     }
-    
+    public function cartClear(Request $request)
+    {
+        \Cart::clear();
+        return redirect('cart')->with('alert', 'Seu carrinho está vazio!');
+    }
 }
