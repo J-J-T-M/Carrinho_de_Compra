@@ -3,6 +3,17 @@
 @section('title', 'Carrinho de compra')
 
 @section('content')
+    @if ($message = Session::get('success'))
+    <div class="toast show bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <strong class="me-auto">Parabéns</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          {{$message}}
+        </div>
+      </div>
+    @endif
     <h3>Seu carrinho possui {{ $items->count() }} produtos</h3>
     <div class="row">
         <table class="table table-striped">
@@ -20,11 +31,12 @@
                     <tr>
                         <th><img src="{{ $item->attributes->image }}" width="70px" class="img-fluid rounded-circle"
                                 alt=""></th>
-                        <td>{{Str::limit ($item->name, 40) }}</td>
+                        <td>{{ Str::limit($item->name, 40) }}</td>
                         <td>R$ {{ number_format($item->price, '2', ',', '.') }}</td>
                         <td>
                             <div class="input-group">
-                                <input type="number" style="width: 1vw;" class="form-control text-center" name="quantity" value="{{ $item->quantity }}">
+                                <input type="number" style="width: 1vw;" class="form-control text-center" name="quantity"
+                                    value="{{ $item->quantity }}">
                             </div>
                         </td>
                         <td>
@@ -44,5 +56,16 @@
             </div>
         </div>
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                $(".toast").fadeOut("slow", function() {
+                    $(this).toast('close');
+                });
+            }, 3000);
+        });
+    </script>
 @endsection
