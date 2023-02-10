@@ -16,7 +16,7 @@
 
 </head>
 
-<body>
+<body style="background: rgb(245,245,245)">
 
     <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
         <div class="container-fluid">
