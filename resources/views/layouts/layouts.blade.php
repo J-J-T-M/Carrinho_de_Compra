@@ -31,7 +31,7 @@
                         <a class="nav-link" href="{{ route('products.index') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('cart')}}">Carrinho</a>
+                        <a class="nav-link" href="{{route('cart')}}">Carrinho <span class="badge bg-primary">{{\Cart::getContent()->count()}}</span></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
