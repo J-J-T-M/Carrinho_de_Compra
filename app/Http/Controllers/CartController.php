@@ -23,6 +23,12 @@ class CartController extends Controller
                 'image' => $request->url_img
             )
         ]);
-        return redirect('cart');
+        return redirect('cart')->with('success', 'Produto adicionado com sucesso!');
     }
+    public function cartRemove(Request $request)
+    {
+        \Cart::remove($request->id);
+        return redirect('cart')->with('success', 'Produto removido com sucesso!');
+    }
+    
 }
