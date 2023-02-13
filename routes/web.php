@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +29,5 @@ Route::post('/cart', [CartController::class, 'addCart'])->name('addCart');
 Route::post('/cart/remove', [CartController::class, 'cartRemove'])->name('removeCart');
 Route::post('/cart/update', [CartController::class, 'cartUpdate'])->name('updateCart');
 Route::get('/cart/clear', [CartController::class, 'cartClear'])->name('clearCart');
+Route::view('/login', 'login.form')->name('login.form');
+Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
