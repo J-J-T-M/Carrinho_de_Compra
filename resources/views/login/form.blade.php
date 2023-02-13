@@ -34,9 +34,6 @@
 </head>
 
 <body>
-    @if ($message = Session::get('erro'))
-        {{ $message }}
-    @endif
     <div class="container pt-3 text-center">
         <div class="row justify-content-center">
             <div class="col-12">
