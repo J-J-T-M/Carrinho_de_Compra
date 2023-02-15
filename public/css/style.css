@@ -1,0 +1,14 @@
+.my-li
+{
+    color: #FFFFFF8C;
+    display: block;
+    padding: 8 px;
+    font-size: 16 px;
+    text-decoration: none;
+    list-style-type: none;
+
+}
+.my-li :hover
+{
+    color: rgb(237, 235, 235);
+}
