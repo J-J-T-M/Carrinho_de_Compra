@@ -45,6 +45,19 @@
 
                         </ul>
                     </li>
+                    <li class="nav-item dropdown d-flex mr-auto">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Olá {{ auth()->user()->firstName }}!
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li>teste</li>
+                            <li>teste</li>
+                            <li>teste</li>
+                            <li>teste</li>
+                            <li>teste</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
