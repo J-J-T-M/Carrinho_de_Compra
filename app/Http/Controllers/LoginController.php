@@ -19,7 +19,7 @@ class LoginController extends Controller
                 $request->session()->regenerate();
 
                 // intended verifica se o user feio de algum lugar
-                return redirect()->intended('dashboard');
+                return redirect()->intended('/admin/dashboard');
             }
         else
         {
