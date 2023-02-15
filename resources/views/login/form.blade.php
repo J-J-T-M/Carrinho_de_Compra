@@ -49,7 +49,7 @@
         <form action="{{ route('login.auth') }}" method="post">
             @csrf
             <input type="text" name="email" placeholder="Email" required="required" />
-            <input type="password" name="password" placeholder="Senha" required="required" />
+            <input type="password" name="password" placeholder="Senha" required="required" min="8" />
             @if ($message = Session::get('erro'))
                 <p class="text-danger">{{ $message }}</p>
             @endif
