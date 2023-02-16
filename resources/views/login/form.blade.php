@@ -50,6 +50,15 @@
             @csrf
             <input type="text" name="email" placeholder="Email" required="required" />
             <input type="password" name="password" placeholder="Senha" required="required" min="8" />
+
+            <div class="form-check form-check-inline m-0 d-flex justify-content-end">
+                <label class="form-check-label text-white" for="lembrar">
+                    Lembrar-me
+                </label>
+                <input class="form-check-input m-0" type="checkbox" style="width: 3vh; height: 1.6vh" value=""
+                    id="lembrar" name="remember">
+            </div>
+
             @if ($message = Session::get('erro'))
                 <p class="text-danger">{{ $message }}</p>
             @endif
@@ -59,8 +68,10 @@
                 @endforeach
 
             @endif
-            <button type="submit" class="btn btn-primary btn-block btn-large">Entrar</button>
+
+            <button type="submit" class="btn btn-primary btn-block btn-large mt-3">Entrar</button>
         </form>
+        <a href="{{ route('login.create') }}" class="btn btn-primary btn-block btn-large">Registre-se</a>
     </div>
     <script
         src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'>
