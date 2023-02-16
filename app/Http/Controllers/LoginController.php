@@ -13,7 +13,7 @@ class LoginController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required', 'min:8' , 'max:102']
         ]);
-        if (Auth::attempt($credentials))
+        if (Auth::attempt($credentials, $request->remember))
             {
                 // gerar um novo id para sessão
                 $request->session()->regenerate();
@@ -25,5 +25,17 @@ class LoginController extends Controller
         {
             return redirect()->back()->with('erro', 'Email ou senha inválida.');
         }
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('products');
+
+    }
+    public function create()
+    {
+        return view('login.register');
     }
 }
