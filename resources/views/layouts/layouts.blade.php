@@ -25,13 +25,14 @@
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse  justify-content-center" id="navbarNavDropdown">
-                <ul class="navbar-nav">
+            <div class="collapse navbar-collapse  " id="navbarNavDropdown">
+                <ul class="navbar-nav ">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('products.index') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('cart')}}">Carrinho <span class="badge bg-primary">{{\Cart::getContent()->count()}}</span></a>
+                        <a class="nav-link" href="{{ route('cart') }}">Carrinho <span
+                                class="badge bg-primary">{{ \Cart::getContent()->count() }}</span></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
@@ -40,25 +41,34 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             @foreach ($categoryMenu as $category)
-                            <li><a class="dropdown-item" href="{{route('categories.show', $category)}}">{{$category->name}}</a></li>
+                                <li><a class="dropdown-item"
+                                        href="{{ route('categories.show', $category) }}">{{ $category->name }}</a></li>
                             @endforeach
 
                         </ul>
                     </li>
-                    <li class="nav-item dropdown d-flex mr-auto">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Olá {{ auth()->user()->firstName }}!
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li>teste</li>
-                            <li>teste</li>
-                            <li>teste</li>
-                            <li>teste</li>
-                            <li>teste</li>
-                        </ul>
-                    </li>
                 </ul>
+            </div>
+            <div class="d-flex align-items-center my-li me-5">
+                @auth
+                        <li class="nav-item dropdown d-flex">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Olá {{ auth()->user()->firstName }}!
+                            </a>
+                            <ul class="dropdown-menu bg-dark text-white" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard <i
+                                            class="fa-solid fa-gauge-high"></i></a></li>
+                                <li><a class="nav-link" href="{{ route('login.logout') }}">Sair <i
+                                            class="fa-solid fa-right-from-bracket"></i> </a></li>
+                            </ul>
+                        </li>
+                    @else
+                        <li class="nav-item" style="word-spacing: 6px;">
+                            <a class="nav-link m-3" href="{{ route('login.form') }}">Login <i class="fa-solid fa-user"></i></a>
+                        </li>
+
+                    @endauth
             </div>
         </div>
     </nav>
