@@ -49,10 +49,18 @@ class ProductController extends Controller
      */
     public function show(product $product)
     {
-        // Gate::authorize('see-product',$product);
-        $this->authorize('seeProduct',$product);
+        // allows permite determinadas ações
+        if (Gate::allows('see-product',$product))
+        {
+            return view('products.show', ['product' => $product]);
+        }
 
-        return view('products.show', ['product' => $product]);
+        // denies negar determinadas ações
+        if (Gate::denies('see-product',$product))
+        {
+            return redirect()->route('products.index');
+        }
+
     }
 
     /**
