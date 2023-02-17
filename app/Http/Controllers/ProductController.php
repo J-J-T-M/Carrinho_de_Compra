@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
+use App\Policies\ProductPolicy;
 
 class ProductController extends Controller
 {
@@ -47,20 +47,23 @@ class ProductController extends Controller
      * @param  \App\Models\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(product $product)
+    public function show(Product $product)
     {
-        // allows permite determinadas ações
-        if (Gate::allows('see-product',$product))
-        {
-            return view('products.show', ['product' => $product]);
-        }
+        // can permite determinadas ações
+        if (auth()->user()) {
+            if (auth()->user()->can('seeProduct', $product)) {
+                return view('products.show', ['product' => $product]);
+            }
 
-        // denies negar determinadas ações
-        if (Gate::denies('see-product',$product))
-        {
-            return redirect()->route('products.index');
+            // cannot negar determinadas ações
+            if (auth()->user()->cannot('seeProduct', $product)) {
+                return redirect()->route('products.index');
+            }
         }
-
+        else
+        {
+            return redirect()->route('login.form');
+        }
     }
 
     /**
