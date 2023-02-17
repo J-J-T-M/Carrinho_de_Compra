@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
@@ -48,6 +49,7 @@ class ProductController extends Controller
      */
     public function show(product $product)
     {
+        Gate::authorize('see-product',$product);
         return view('products.show', ['product' => $product]);
     }
 
