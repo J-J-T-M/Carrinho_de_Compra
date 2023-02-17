@@ -12,9 +12,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ Str::limit( $product->name, 25) }}</h5>
                             <p class="card-text">{{ Str::limit($product->description, 40) }}</p>
-                            @can('seeProduct', $product)
                             <a href="{{ route('products.show', $product) }}" class="btn btn-primary" style="border-radius: 60vh"><i class="fa-solid fa-eye"></i></a>
-                            @endcan
                         </div>
                     </div>
                     <br>
