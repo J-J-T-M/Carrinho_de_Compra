@@ -49,7 +49,9 @@ class ProductController extends Controller
      */
     public function show(product $product)
     {
-        Gate::authorize('see-product',$product);
+        // Gate::authorize('see-product',$product);
+        $this->authorize('seeProduct',$product);
+
         return view('products.show', ['product' => $product]);
     }
 
