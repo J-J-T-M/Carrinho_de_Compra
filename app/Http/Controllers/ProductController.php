@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Policies\ProductPolicy;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -38,7 +40,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = $request->all();
+
+        if($request->url_image)
+        {
+            $product['url_image'] = $request->url_image->store('products');
+        }
+
+        $product['slug'] = Str::slug($request->name);
+
+        $product = Product::create($product);
+
+        return redirect()->route('admin.products')->with('success', 'Produto cadastrado com sucesso!');
     }
 
     /**
@@ -97,6 +110,14 @@ class ProductController extends Controller
      */
     public function destroy(product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('admin.products')->with('success', 'Produto excluído com sucesso!');
+    }
+    public function index2()
+    {
+        $products = Product::with('category')->oldest();
+        $categories = Category::all();
+
+        return view('admin.products.index2', ['products' => $products->paginate(10), 'categories' => $categories]);
     }
 }
