@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', 'products/');
 Route::resource('products', ProductController::class);
 Route::resource('users', UserController::class);
+Route::get('/admin/products', [ProductController::class, 'index2'])->name('admin.products');
 
 // rotas de categorias
 Route::resource('categories', CategoryController::class);
