@@ -90,68 +90,63 @@
     </div>
 
     </div>
-    <h1>{{$categoryTotal}}</h1>
-
 
 @endsection
 @push('graphics')
     <script>
         /* Gráfico 01 */
-var ctx = document.getElementById('myChart');
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: [{{$userYear}}],
-        datasets: [{
-            label: {!! $userLabel !!},
-            data: [{{$userTotal}}],
-            backgroundColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-           borderWidth: 1,
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
+        var ctx = document.getElementById('myChart');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [{{ $userYear }}],
+                datasets: [{
+                    label: {!! $userLabel !!},
+                    data: [{{ $userTotal }}],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1,
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
                 }
-            }]
-        }
-    }
-});
+            }
+        });
 
-/* Gráfico 02 */
-var ctx = document.getElementById('myChart2');
-var myChart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-        labels: [{!! $name !!}],
-        datasets: [{
-            label: 'Visitas',
-            data: [12, 19, 3, 85, 36],
-            backgroundColor: [
-                'rgba(255, 99, 132)',
-                'rgba(54, 162, 235)',
-                'rgba(255, 199, 132)',
-                'rgba(154, 162, 235)',
-                'rgba(255, 159, 64)'
-            ]
-        }]
-    }
-});
-
-
-
+        /* Gráfico 02 */
+        var ctx = document.getElementById('myChart2');
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: [{!! $name !!}],
+                datasets: [{
+                    label: 'Visitas',
+                    data: [{{ $categoryTotal }}],
+                    backgroundColor: [
+                        'rgba(255, 99, 132)',
+                        'rgba(54, 162, 235)',
+                        'rgba(255, 199, 132)',
+                        'rgba(154, 162, 235)',
+                        'rgba(255, 159, 64)'
+                    ]
+                }]
+            }
+        });
     </script>
 @endpush
