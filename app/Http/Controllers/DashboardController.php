@@ -35,11 +35,11 @@ class DashboardController extends Controller
 
         // gráfico 2
 
-        $categoriesData = Category::all();
+        $categoriesData = Category::with('products')->get();
 
         foreach ($categoriesData as $category) {
             $catName[] = "'" . $category->name . "'";
-            $catTotal[] = Product::where('id_category', $category->id)->count();
+            $catTotal[] = $category->products->count();
         }
         // formatar para o chart js
         $categoryLabel = "'Comparativo entre categorias'";
