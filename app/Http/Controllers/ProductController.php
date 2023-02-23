@@ -63,20 +63,21 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         // can permite determinadas ações
-        if (auth()->user()) {
-            if (auth()->user()->can('seeProduct', $product)) {
-                return view('products.show', ['product' => $product]);
-            }
+        // if (auth()->user()) {
+        //     if (auth()->user()->can('seeProduct', $product)) {
+        //         return view('products.show', ['product' => $product]);
+        //     }
 
-            // cannot negar determinadas ações
-            if (auth()->user()->cannot('seeProduct', $product)) {
-                return redirect()->route('products.index');
-            }
-        }
-        else
-        {
-            return redirect()->route('login.form');
-        }
+        //     // cannot negar determinadas ações
+        //     if (auth()->user()->cannot('seeProduct', $product)) {
+        //         return redirect()->route('products.index');
+        //     }
+        // }
+        // else
+        // {
+        //     return redirect()->route('login.form');
+        // }
+        return view('products.show', ['product' => $product]);
     }
 
     /**
